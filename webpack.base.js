@@ -3,13 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const px2rem = require('postcss-px2rem')
 // 抽离css
-const extractCss = new ExtractTextPlugin("style.css")
+const extractCss = new ExtractTextPlugin('style.css')
 // html 模版
 const htmlTemplate = new HtmlWebpackPlugin({
-    template:'./src/index.html',
+    template:'./public/index.html',
     favicon: './public/favicon.png',
-    inject: 'body',
-    hash: true,
 })
 const config = {
     output:{
@@ -19,7 +17,7 @@ const config = {
     resolve: {
         extensions: ['.js', '.jsx', '.json'],
         alias: {
-          '@': path.resolve('src'),
+            '@': path.resolve('src'),
         }
     },
     module:{
@@ -68,22 +66,22 @@ const config = {
                         // package.json
                         loader: require.resolve('postcss-loader'),
                         options: {
-                          // Necessary for external CSS imports to work
-                          // https://github.com/facebook/create-react-app/issues/2677
-                          ident: 'postcss',
-                          // 这些是配置rem的
-                          plugins: () => [
-                            require('postcss-flexbugs-fixes'),
-                            require('postcss-preset-env')({
-                              autoprefixer: {
-                                flexbox: 'no-2009',
-                              },
-                              stage: 3,
-                            }),
-                            px2rem({remUnit: 37.5})  // 这里表示 75px = 1rem
-                          ],
+                            // Necessary for external CSS imports to work
+                            // https://github.com/facebook/create-react-app/issues/2677
+                            ident: 'postcss',
+                            // 这些是配置rem的
+                            plugins: () => [
+                                require('postcss-flexbugs-fixes'),
+                                require('postcss-preset-env')({
+                                    autoprefixer: {
+                                        flexbox: 'no-2009',
+                                    },
+                                    stage: 3,
+                                }),
+                                px2rem({remUnit: 37.5})  // 这里表示 75px = 1rem
+                            ],
                         },
-                      },
+                    },
                     {
                         loader:require.resolve('less-loader')
                     }
@@ -91,7 +89,7 @@ const config = {
             },
             {
                 test:/\.(js|jsx)$/,
-                use:"babel-loader",
+                use:'babel-loader',
                 exclude:/node_modules/
             }
         ]

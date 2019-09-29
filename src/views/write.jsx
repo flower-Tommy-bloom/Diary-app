@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react'
 import request from '../utils/request'
-import { Button } from 'antd-mobile';
-import '@/index.less'
+// import { Button } from 'antd-mobile'
 export default class Page1 extends PureComponent{
     constructor(props){
         super(props)
@@ -16,11 +15,21 @@ export default class Page1 extends PureComponent{
             })
         })
     }
+    // eslint-disable-next-line no-undef
+    // artEditor = new Eleditor({
+    //     el: '#article-body',
+    //     upload:{
+    //         server: '/upload.php',
+    //         fileSizeLimit: 2
+    //     }
+    // })
     render(){
         return (
-            <div>
+            <div className="write">
                 <div className="interpret">
-                    
+                </div>
+                <div className="input">
+                    <input type="text"/>
                 </div>
             </div>
         )
